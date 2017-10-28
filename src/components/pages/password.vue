@@ -48,7 +48,7 @@
 <script>
   import vHead from '../commons/TeacherNav';
   import right from './passwordModify';
-  import securityQues from './securityQuestionModify';
+  import securityQues from './securityQuestionModify.vue';
   
   export default {
     name:'passmodi',

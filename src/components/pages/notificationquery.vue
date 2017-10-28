@@ -29,11 +29,11 @@
          </el-col>
         </div>
         <div class="right">
-          <template v-if="selectIndex==('Unread')">
-            <right></right>
+          <template v-if="selectIndex==('unRead')">
+            <un-read-list></un-read-list>
           </template>
           <template v-else>
-            <security-ques></security-ques> 
+            <readed-list></readed-list>
           </template>
         </div>
 
@@ -47,16 +47,21 @@
     
 <script>
   import vHead from '../commons/TeacherNav';
-
-  var selectIndex='';
+  import unReadList from './unreadNotificationList.vue'
+  import ReadedList from './readNotificationList.vue'
   export default {
     name:'passmodi',
     components:{
               vHead,
-          
+              unReadList,
+              ReadedList,
           },
     data () {
+      
       return {
+      
+     
+        selectIndex:''
 
       }
     },
