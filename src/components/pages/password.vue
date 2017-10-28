@@ -29,7 +29,7 @@
          </el-col>
         </div>
         <div class="right">
-          <template v-if="selectIndex==('modfify')">
+          <template v-if="selectIndex==('modify')">
             <right></right>
           </template>
           <template v-else>

@@ -22,14 +22,14 @@
       <div class="left">
          <el-col :span="25">
         <el-menu default-active="onRoutes" class="el-menu-vertical-demo" @select="handleSelect" theme="light">
-          <el-menu-item index="1-2-1"><i class="el-icon-setting"></i>未读通知</el-menu-item>
-          <el-menu-item index="1-2-2"><i class="el-icon-setting"></i>已读通知</el-menu-item>
+          <el-menu-item index="unRead"><i class="el-icon-setting"></i>未读通知</el-menu-item>
+          <el-menu-item index="Readed"><i class="el-icon-setting"></i>已读通知</el-menu-item>
           <div class="tianchong"></div>
         </el-menu>
          </el-col>
         </div>
         <div class="right">
-          <template v-if="selectIndex==('1-2-1')">
+          <template v-if="selectIndex==('Unread')">
             <right></right>
           </template>
           <template v-else>
@@ -53,8 +53,7 @@
     name:'passmodi',
     components:{
               vHead,
-              right,
-              securityQues
+          
           },
     data () {
       return {
@@ -65,11 +64,7 @@
     handleSelect:function(key,keyPath){
       this.selectIndex=key;
       console.log(this.selectIndex);
-      if(this.selectIndex=='1-2-1')
-        this.subs.push({url:'#/1-2-1',title:'修改密码'})
-      else{
-        this.subs.push({url:'#/1-2-2',title:'修改密保问题'})
-      }
+   
     },
 
     }
