@@ -20,7 +20,7 @@
       label="通知主题" id="notification" min-width="55%">
     </el-table-column>
      <el-table-column label="操作"  min-width="30%">
-      <template scope="scope">
+      <template slot-scope="scope">
       <el-button type="primary" @click="showDetail(scope.row)" class="ope-button">查看通知</el-button>
       <el-button type="danger"  @click="del(scope.$index)" class="ope-button">删除通知</el-button>
       </template>
