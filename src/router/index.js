@@ -26,7 +26,7 @@ export default new Router({
     },{
       path:'/changescore',
       component:resolve=>require(['../components/pages/changescore'],resolve)
-    }，{
+    },{
       path: '/filesInfo',
       component: resolve => require(['../components/pages/filesInfo.vue'], resolve)
     }
