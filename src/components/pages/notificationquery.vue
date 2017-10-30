@@ -28,13 +28,14 @@
         </el-menu>
          </el-col>
         </div>
-        <div class="right">
+        <div class="right" >
           <template v-if="selectIndex==('unRead')">
-            <un-read-list></un-read-list>
+            <un-read-list :child-un="this.tableData3" v-on:readedNo="readedNode" ></un-read-list>
           </template>
           <template v-else>
-            <readed-list></readed-list>
+            <readed-list :child-ed="this.tableData4"></readed-list>
           </template>
+
         </div>
 
      <div class="clear"></div>
@@ -60,9 +61,78 @@
       
       return {
       
-     
-        selectIndex:''
-
+        selectIndex:'',
+         tableData3: [{
+         
+          date: '2016-05-03',
+          name: '王小虎',
+          address: '上海市普陀区金沙江路 1518 弄'
+        }, {
+          
+          date: '2016-05-02',
+          name: '王小虎',
+          address: '上海市普陀区金沙江路 1518 弄'
+        }, {
+         
+          date: '2016-05-04',
+          name: '王小虎',
+          address: '上海市普陀区金沙江路 1518 弄'
+        }, {
+        
+          date: '2016-05-01',
+          name: '王小虎',
+          address: '上海市普陀区金沙江路 1518 弄'
+        }, {
+       
+          date: '2016-05-08',
+          name: '王小虎',
+          address: '上海市普陀区金沙江路 1518 弄'
+        }, {
+         
+          date: '2016-05-06',
+          name: '王小虎',
+          address: '上海市普陀区金沙江路 1518 弄'
+        }, {
+          
+          date: '2016-05-07',
+          name: '王小虎',
+          address: '上海市普陀区金沙江路 1518 弄'
+        }],
+        tableData4: [{
+         
+          date: '2016-05-03',
+          name: '王虎',
+          address: '上海市普陀区金沙江路 1518 弄'
+        }, {
+        
+          date: '2016-05-02',
+          name: '王虎',
+          address: '上海市普陀区金沙江路 1518 弄'
+        }, {
+            date: '2016-05-04',
+          name: '王虎',
+          address: '上海市普陀区金沙江路 1518 弄'
+        }, {
+          
+          date: '2016-05-01',
+          name: '王小',
+          address: '上海市普陀区金沙江路 1518 弄'
+        }, {
+          
+          date: '2016-05-08',
+          name: '王小',
+          address: '上海市普陀区金沙江路 1518 弄'
+        }, {
+           
+          date: '2016-05-06',
+          name: '王虎',
+          address: '上海市普陀区金沙江路 1518 弄'
+        }, {
+           
+          date: '2016-05-07',
+          name: '王虎',
+          address: '上海市普陀区金沙江路 1518 弄'
+        }],
       }
     },
     methods: {
@@ -71,8 +141,12 @@
       console.log(this.selectIndex);
    
     },
-
+    readedNode(item){
+      // console.log(item.name);
+      this.tableData4.unshift(item);
+      // console.log(this.tableData4[0].name)
     }
+      }
   };
 
 
@@ -95,7 +169,7 @@
 }
 .right{
   float: right;
-  width:85%;height:500px;
+  width:85%;
   text-align: center;
    margin-top: 5px;
    background-color:#eef1f6;

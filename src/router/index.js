@@ -20,8 +20,15 @@ export default new Router({
     },{
       path:'/notification',
       component:resolve=>require(['../components/pages/notificationquery'],resolve)
+    },{
+      path:'/registerScore',
+      component:resolve=>require(['../components/pages/score'],resolve)
+    },{
+      path:'/changescore',
+      component:resolve=>require(['../components/pages/changescore'],resolve)
     }
 
+   
     
   ]
 })
