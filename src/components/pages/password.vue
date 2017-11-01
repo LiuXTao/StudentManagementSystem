@@ -33,7 +33,7 @@
             <right></right>
           </template>
           <template v-else>
-            <security-ques></security-ques> 
+            <security-ques :security-ques="this.securityQues" ></security-ques> 
           </template>
         </div>
 
@@ -58,8 +58,17 @@
               securityQues
           },
     data () {
+
       return {
         selectIndex:'',
+        securityQues: {
+            firstP:"你第一所学校是什么",
+            firstA:"1",
+            secondP:"你父亲的名字是什么",
+            secondA:"2",
+            thirdP:"你母亲的名字是什么",
+            thirdA:"3"
+        },
       }
     },
     methods: {

@@ -7,57 +7,63 @@
               <el-form  id="select">
               <div >
               <el-form-item label="学年:" class="labels">
-              <el-select v-model="value" placeholder="请选择学年" class="sel1">
+              <el-select v-model="y_value" placeholder="请选择学年" class="sel1">
                     <el-option  v-for="item in years"  :key="item.value":label="item.label"  :value="item.value">   </el-option>
                 </el-select>
               </el-form-item>
               </div>
               <div>
               <el-form-item label="学期:" class="labels">
-              <el-select v-model="value" placeholder="请选择学期" class="sel2">
+              <el-select v-model="m_value" placeholder="请选择学期" class="sel2">
                     <el-option  v-for="item in months"  :key="item.value"  :label="item.label"  :value="item.value"> </el-option>
                 </el-select>
               </el-form-item>
+              <el-button type="primary" @click="submit" id="submit">查询</el-button>
               </div>
+              <div class="clear"> </div>
             </el-form>
           </div>
       <div id="table">
-    <el-table :data="tableData3"  border >
-    <el-table-column
-      prop="date"
-      label="节数\日期"
-      
-      min-width:"5%">
-    </el-table-column>
+  
 
-      <el-table-column
-        prop="name"
-        label="星期一"
-        min-width:"20%">
-      </el-table-column>
-        <el-table-column
-          prop="province"
-          label="星期二"
-          min-width:"20%">
-        </el-table-column>
-        <el-table-column
-          prop="city"
-          label="星期三"
-           min-width:"20%">
-        </el-table-column>
-        <el-table-column
-          prop="address"
-          label="星期四"
-           min-width:"20%">
-        </el-table-column>
-        <el-table-column
-          prop="zip"
-          label="星期五"
-           min-width:"20%">
-        </el-table-column>
-
-
+         <el-table
+              :data="tableData3"
+              id="classTable"
+              
+              border>
+              <el-table-column
+                
+                prop="date"
+                label="节数\日期"
+                min-width="10%">
+              </el-table-column>
+              <el-table-column
+                prop="monday"
+                label="星期一"
+               min-width="20%">
+              </el-table-column>
+              <el-table-column
+                prop="tuesday"
+                label="星期二"
+                min-width="20%">
+              </el-table-column>
+              <el-table-column
+                prop="wednesday"
+                label="星期三"
+                min-width="20%">
+              </el-table-column>
+              <el-table-column
+                prop="thursday"
+                label="星期四"
+                min-width="20%">
+              </el-table-column>
+              <el-table-column
+                prop="friday"
+                label="星期五"
+                min-width="20%">
+              </el-table-column>
             </el-table>
+
           </div>
         </div>
     </div>
@@ -69,14 +75,15 @@ import vHead from '../commons/TeacherNav.vue';
 export default {
       data() {
       return {
-        value: '',
+        y_value: '',
+        m_value:'',
         years:[
-           {label:2013,velue:2013},
-           {label:2014,velue:2014},
-           {label:2015,velue:2015},
-           {label:2017,velue:2017},
-           {label:2017,velue:2017},
-           {label:2018,velue:2018}
+           {label:2013,value:2013},
+           {label:2014,value:2014},
+           {label:2015,value:2015},
+           {label:2017,value:2017},
+           {label:2017,value:2017},
+           {label:2018,value:2018}
         ],
         months:[
           {label:1,value:1},
@@ -84,55 +91,48 @@ export default {
         ],
 
         tableData3: [{
-          date: '2016-05-03',
-          name: '王小虎',
-          province: '上海',
-          city: '普陀区',
-          address: '上海市普陀区金沙江路 1518 弄',
-          zip: 200333
+          date: '第1，2节   (am)',
+          monday: '王小虎',
+          tuesday: '上海',
+          wednesday: '普陀区',
+          thursday: '上海市普陀区金沙江路 1518 弄',
+          friday: 200333
         }, {
-          date: '2016-05-02',
-          name: '王小虎',
-          province: '上海',
-          city: '普陀区',
-          address: '上海市普陀区金沙江路 1518 弄',
-          zip: 200333
+            date: '第3,4节  (am)',
+          monday: '王小虎',
+          tuesday: '上海',
+          wednesday: '普陀区',
+          thursday: '上海市普陀区金沙江路 1518 弄',
+          friday: 200333
         }, {
-          date: '2016-05-04',
-          name: '王小虎',
-          province: '上海',
-          city: '普陀区',
-          address: '上海市普陀区金沙江路 1518 弄',
-          zip: 200333
+           date: '第5,6节   (pm)',
+          monday: '王小虎',
+          tuesday: '上海',
+          wednesday: '普陀区',
+          thursday: '上海市普陀区金沙江路 1518 弄',
+          friday: 200333
         }, {
-          date: '2016-05-01',
-          name: '王小虎',
-          province: '上海',
-          city: '普陀区',
-          address: '上海市普陀区金沙江路 1518 弄',
-          zip: 200333
+           date: '第7,8节   (pm)',
+          monday: '王小虎',
+          tuesday: '上海',
+          wednesday: '普陀区',
+          thursday: '上海市普陀区金沙江路 1518 弄',
+          friday: 200333
         }, {
-          date: '2016-05-08',
-          name: '王小虎',
-          province: '上海',
-          city: '普陀区',
-          address: '上海市普陀区金沙江路 1518 弄',
-          zip: 200333
-        }, {
-          date: '2016-05-06',
-          name: '王小虎',
-          province: '上海',
-          city: '普陀区',
-          address: '上海市普陀区金沙江路 1518 弄',
-          zip: 200333
-        }, {
-          date: '2016-05-07',
-          name: '王小虎',
-          province: '上海',
-          city: '普陀区',
-          address: '上海市普陀区金沙江路 1518 弄',
-          zip: 200333
-        }]
+            date: '第9,10,11节   ',
+          monday: '王小虎',
+          tuesday: '上海',
+          wednesday: '普陀区',
+          thursday: '上海市普陀区金沙江路 1518 弄',
+          friday: 200333
+        }
+         ]
+      }
+    },
+    methods:{
+      submit(){
+        console.log(this.y_value);
+        console.log(this.m_value);
       }
     },
 
@@ -167,13 +167,22 @@ export default {
     width:40%;
     display: inline;
 }
+#submit{
+  margin-top:36px;
+  margin-left:10px;
+  float:left;
+}
 #table{
-  /* width:90%; */
+  width:90%;
+  
   margin:0px auto;
 }
-/* .sel{
-    float:left;
-    display: inline;
+#classTable{
+  width:100%;
+}
+/* #classTable td{
+  color:blue;
+  height:55px;
 } */
 
 </style>

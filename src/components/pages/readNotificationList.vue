@@ -12,7 +12,7 @@
     </el-table-column>
     <el-table-column
       prop="date"
-      label="发布日期"  id="date" min-width="18%">
+      label="发布日期"  id="date" min-width="18%"  sortable>
         <template slot-scope="scope">
         <i class="el-icon-time"></i>
         <span style="margin-left: 10px">{{ scope.row.date }}</span>
