@@ -3,30 +3,17 @@
     <v-head></v-head>  
   <div class="clear"></div>
     <div class="mainborder">
-      <!-- <div class="position">
-        <div class="el-icon-caret-right">当前位置</div>
-          >>
-        <template v-for='index in indexs'> </template> -->
-          <!-- <template v-for="index in indexs">
-          <a  :href='index.url'>{{index.title}}</a>
-          <template v-if="index.subs.size==0">
-            >>
-            <template v-for="subindex in index.subs">
-            <a  :href='subindex.url'>{{subindex.title}}</a>
-            </template>
-          </template>
-          </template>
-        </div> --> 
+     
     
       <div>
       <div class="left">
-         <el-col :span="25">
-        <el-menu default-active="onRoutes" class="el-menu-vertical-demo" @select="handleSelect" theme="light">
+         
+        <el-menu   class="el-menu-vertical-demo" @select="handleSelect" theme="light">
           <el-menu-item index="modify"><i class="el-icon-setting"></i>修改密码</el-menu-item>
           <el-menu-item index="question"><i class="el-icon-setting"></i>修改密保</el-menu-item>
           <div class="tianchong"></div>
         </el-menu>
-         </el-col>
+       
         </div>
         <div class="right">
           <template v-if="selectIndex==('modify')">
@@ -41,7 +28,7 @@
       </div>
     </div>
   
-  </div>
+  
 </div>
 </template>
     
@@ -99,6 +86,9 @@
   margin-top: 5px;
   float: left;
 }
+.el-menu-vertical-demo{
+  margin:0px auto;
+}
 .right{
   float: right;
   width:85%;height:500px;
@@ -140,4 +130,17 @@ a:active {
 
 </style>
 
-  
+   <!-- <div class="position">
+        <div class="el-icon-caret-right">当前位置</div>
+          >>
+        <template v-for='index in indexs'> </template> -->
+          <!-- <template v-for="index in indexs">
+          <a  :href='index.url'>{{index.title}}</a>
+          <template v-if="index.subs.size==0">
+            >>
+            <template v-for="subindex in index.subs">
+            <a  :href='subindex.url'>{{subindex.title}}</a>
+            </template>
+          </template>
+          </template>
+        </div> --> 

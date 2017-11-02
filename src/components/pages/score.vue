@@ -2,8 +2,8 @@
 <div>
 <v-head></v-head>
     <el-table
-      :data="newsList"
-      style="width: 100%" @row-click="newsClick">
+      :data="newsList" border
+      style="width: 100%" @row-click="newsClick" >
 	  
       <el-table-column
         prop="coursename"
@@ -22,7 +22,7 @@
 	   <el-table-column
         label="是否修改"
         width="300" >
-		<template slot-scope="scope">
+		  <template slot-scope="scope">
           <div slot="reference">
           <el-button type="primary" @row-click="newsClick(scope.row)">录入成绩</el-button>
           </div>

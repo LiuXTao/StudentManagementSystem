@@ -22,10 +22,11 @@
                   </template>
               </template>
           </el-menu>
+          
       </div>
       
     </header>  
-  <div class="pos"></div>
+    <div class="pos"></div>
   </div>
 
 
@@ -34,20 +35,19 @@
 <script>
 
 export default {
-  name: 'head',
+  name: 'teacherHead',
   data () {
     return {
-    
       items:[{
-        index: 'personal',
+        index: '/personal',
         title: '个人档案管理',
         subs:[
           {
-            index:'filesInfo',
+            index:'/teacher/filesInfo',
             title:'个人档案'
           },
           {
-            index:'password',
+            index:'/teacher/password',
             title:'修改密码'
           }
         ]
@@ -56,14 +56,14 @@ export default {
         title: '查询管理',
         subs:[
           {
-            index:'classTable',
+            index:'/teacher/classTable',
             title:'查看课表'
           },{
-            index:'notification',
+            index:'/teacher/notification',
             title:'查看通知'
           }
         ]
-      },{index:'registerScore',
+      },{index:'/teacher/registerScore',
          title:'录入成绩'
       },{
         index:'quit',
@@ -127,7 +127,7 @@ export default {
 }
 
 .pos{
-  height:80px;
+  height:38px;
 }
 
 .myuser{

@@ -2,7 +2,7 @@
     <div>
         <v-head></v-head>
         <div class="clear"></div>
-        <div class="el-main">
+        <div class="selectBar">
           <div id="selectForm">
               <el-form  id="select">
               <div >
@@ -23,54 +23,53 @@
               <div class="clear"> </div>
             </el-form>
           </div>
-      <div id="table">
-  
-
-         <el-table
-              :data="tableData3"
-              id="classTable"
-              
-              border>
-              <el-table-column
-                
-                prop="date"
-                label="节数\日期"
-                min-width="10%">
-              </el-table-column>
-              <el-table-column
-                prop="monday"
-                label="星期一"
-               min-width="20%">
-              </el-table-column>
-              <el-table-column
-                prop="tuesday"
-                label="星期二"
-                min-width="20%">
-              </el-table-column>
-              <el-table-column
-                prop="wednesday"
-                label="星期三"
-                min-width="20%">
-              </el-table-column>
-              <el-table-column
-                prop="thursday"
-                label="星期四"
-                min-width="20%">
-              </el-table-column>
-              <el-table-column
-                prop="friday"
-                label="星期五"
-                min-width="20%">
-              </el-table-column>
-            </el-table>
-
-          </div>
         </div>
+        <div class="tableBar">
+        <div id="table">
+          <el-table
+                :data="tableData3"
+                id="classTable"
+                border>
+                <el-table-column
+                  
+                  prop="date"
+                  label="节数\日期"
+                  min-width="10%">
+                </el-table-column>
+                <el-table-column
+                  prop="monday"
+                  label="星期一"
+                min-width="20%">
+                </el-table-column>
+                <el-table-column
+                  prop="tuesday"
+                  label="星期二"
+                  min-width="20%">
+                </el-table-column>
+                <el-table-column
+                  prop="wednesday"
+                  label="星期三"
+                  min-width="20%">
+                </el-table-column>
+                <el-table-column
+                  prop="thursday"
+                  label="星期四"
+                  min-width="20%">
+                </el-table-column>
+                <el-table-column
+                  prop="friday"
+                  label="星期五"
+                  min-width="20%">
+                </el-table-column>
+              </el-table>
+
+        </div>
+      </div>
     </div>
 </template>
 
 <script>
-import vHead from '../commons/TeacherNav.vue';
+import vHead from '../commons/StudentNav.vue';
 
 export default {
       data() {
@@ -146,16 +145,24 @@ export default {
  .clear{
      clear:both;
  }
-.el-main{
-    margin-top:5px;
+.selectBar{
+    margin-top:6px;
     background-color:#eef1f6;
     color: #333;
     text-align: center;
-    height:800px;
+    height:80px;
+}
+.tableBar{
+    margin-top:5px;
+    padding-top:6px;
+    background-color:#eef1f6;
+    color: #333;
+    text-align: center;
+    height:500px;
 }
 #selectForm{
 
-    padding-top: 10px;
+    padding-top: 1px;
 
 }
 #select{
