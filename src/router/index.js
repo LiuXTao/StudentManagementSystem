@@ -47,7 +47,16 @@ export default new Router({
         },{
           path: '/teacher/filesInfo',
           component: resolve => require(['../components/pages/filesInfo.vue'], resolve)
+        },{
+          path: '/teacher/batchscore',
+          component: resolve => require(['../components/pages/batchscore.vue'], resolve)
+        },{
+          path: '/teacher/seescore',
+          component: resolve => require(['../components/pages/seescore.vue'], resolve)
         }
+		
+		
+		
        ] }
 
    

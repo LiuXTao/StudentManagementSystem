@@ -1,5 +1,5 @@
 <template>
-    <div class="mainchange">
+    <div class="mainsee">
 	<v-head></v-head>
        <el-table
       :data="newsList"
@@ -16,16 +16,11 @@
 		
       </el-table-column>
       <el-table-column
+	    prop="score"
         label="分数">
-		<template slot-scope="scope">
-          <div slot="reference">
-		<el-input placeholder="" v-model="scope.row.score" number></el-input>
-		</div>
-      </template>
       </el-table-column>
     </el-table>
 	<div class="mainbutton">
-	 <el-button type="primary" @click="submit()">提交</el-button>
       <el-button type="primary" @click="back()">返回</el-button>
      </div>    
     </div>
@@ -34,7 +29,7 @@
 <script>
      import vHead from '../commons/TeacherNav.vue';
     export default {
-	components:{
+		components:{
         vHead,
     },
         data: function(){
@@ -73,29 +68,6 @@
 		    self=this;
 		    self.$router.push('/teacher/registerScore');
 		   },
-            submit(){//向后端提交数据
-                var self=this;
-				var send=true;
-                for(var i=0;i<self.newsList.length;i++){
-				//alert(self.newsList[i].score);
-                    if(self.newsList[i].score<0||self.newsList[i].score>100||self.newsList[i].score==""){
-					
-                        send=false;
-                        break;
-                    }
-                }
-				if(send){
-                this.$confirm('确定修改？', '提示', {
-                      confirmButtonText: '确定',
-                      cancelButtonText: '取消',
-                      type: 'warning'
-                    })
-					//此处选择确定则接着向后端提交数据
-				}
-				else{
-				 alert('内容填写不正确，所填分数应在0-100之间！');
-				}
-            }
         },
         
         mounted(){
@@ -113,7 +85,7 @@
 </script>
 
 <style scoped>
-.mainchange{
+.mainsee{
   width:70%;
   margin:50px 200px;
   }

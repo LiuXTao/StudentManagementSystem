@@ -1,5 +1,5 @@
 <template>
-    <div class="mainchange">
+    <div class="mainbatch">
 	<v-head></v-head>
        <el-table
       :data="newsList"
@@ -27,12 +27,12 @@
 	<div class="mainbutton">
 	 <el-button type="primary" @click="submit()">提交</el-button>
       <el-button type="primary" @click="back()">返回</el-button>
-     </div>    
+       </div>  
     </div>
 </template>
 
 <script>
-     import vHead from '../commons/TeacherNav.vue';
+    import vHead from '../commons/TeacherNav.vue';
     export default {
 	components:{
         vHead,
@@ -45,22 +45,22 @@
 		    id:1,
             ID: '1',
             name: 'zhangsan',
-            score: '50'
+            score: ''
           }, {
 		    id:2,
              ID: '2',
              name: '李四',
-             score: '89'
+             score: ''
           }, {
 		     id:3,
              ID: '1',
             name: 'zhangsan',
-           score: '98'
+           score: ''
           }, {
 		    id:4,
              ID: '1',
             name: 'zhangsan',
-           score: '100'
+           score: ''
           }]
             }
         },
@@ -85,7 +85,7 @@
                     }
                 }
 				if(send){
-                this.$confirm('确定修改？', '提示', {
+                this.$confirm('确定录入？', '提示', {
                       confirmButtonText: '确定',
                       cancelButtonText: '取消',
                       type: 'warning'
@@ -113,7 +113,7 @@
 </script>
 
 <style scoped>
-.mainchange{
+.mainbatch{
   width:70%;
   margin:50px 200px;
   }
