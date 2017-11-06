@@ -22,6 +22,9 @@ export default new Router({
       },{
         path:'/student/scoreQuery',
         component:resolve=>require(['../components/pages/scoreQuery'],resolve)
+      },{
+        path:'/student/courseQuery',
+        component:resolve=>require(['../components/pages/coursequery'],resolve)
       }
 
     ]

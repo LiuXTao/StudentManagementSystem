@@ -132,6 +132,22 @@ export default {
       submit(){
         console.log(this.y_value);
         console.log(this.m_value);
+        if(this.y_value==''){
+           console.log("error") ;
+                this.$message({
+                    type:"info",
+                    message:"请选择搜学年"
+                });
+        }
+        else if(this.m_value==''){
+           console.log("error") ;
+                this.$message({
+                    type:"info",
+                    message:"请选择搜索学期"
+                });
+        }
+        else 
+        $("#table").show();
       }
     },
 
@@ -158,7 +174,7 @@ export default {
     background-color:#eef1f6;
     color: #333;
     text-align: center;
-    height:500px;
+    
 }
 #selectForm{
 
@@ -181,7 +197,7 @@ export default {
 }
 #table{
   width:90%;
-  
+  display: none;
   margin:0px auto;
 }
 #classTable{

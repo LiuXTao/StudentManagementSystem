@@ -3,16 +3,16 @@
         <v-head></v-head>
         <div class="selectBoard">
             <div class="firstBar">
-            学期 <el-select v-model="value4" class="selectBar" clearable placeholder="请选择学年">
-                    <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+            学年 <el-select v-model="yearSelected" class="selectBar" clearable placeholder="请选择学年">
+                    <el-option v-for="item in years" :key="item.value" :label="item.label" :value="item.value">
                     </el-option>
                 </el-select>
-            学期 <el-select v-model="value5" class="selectBar" clearable placeholder="请选择学期">
-                    <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+            学期 <el-select v-model="monthSelected" class="selectBar" clearable placeholder="请选择学期">
+                    <el-option v-for="item in months" :key="item.value" :label="item.label" :value="item.value">
                     </el-option>
                 </el-select>
-            课程性质 <el-select v-model="value6" class="selectBar" clearable placeholder="请选择课程性质">
-                    <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+            课程性质 <el-select v-model="typeSelected" class="selectBar" clearable placeholder="请选择课程性质">
+                    <el-option v-for="item in courseTypes" :key="item.value" :label="item.label" :value="item.value">
                     </el-option>
                   </el-select>
             <el-button type="primary" @click="searchScore" id="query">查询</el-button>
@@ -20,7 +20,7 @@
             <div class="clear"></div>
           
         </div>
-        <div class="scoreBoard">
+        <div class="infoBoard">
             <div id="info">
                 <table  id="infoTable" border="1" cellSpacing="0" cellPadding="3" width="100%" :selfInfo="this.selfInfo">
 							<tr>
@@ -44,48 +44,59 @@
 						</table>
 
             </div>
-                <div class="tableBar">
-        <div id="table">
-          <el-table
-                :data="tableData3"
-                id="classTable"
-                border>
-                <el-table-column
-                  
-                  prop="date"
-                  label="节数\日期"
-                  min-width="10%">
-                </el-table-column>
-                <el-table-column
-                  prop="monday"
-                  label="星期一"
-                min-width="20%">
-                </el-table-column>
-                <el-table-column
-                  prop="tuesday"
-                  label="星期二"
-                  min-width="20%">
-                </el-table-column>
-                <el-table-column
-                  prop="wednesday"
-                  label="星期三"
-                  min-width="20%">
-                </el-table-column>
-                <el-table-column
-                  prop="thursday"
-                  label="星期四"
-                  min-width="20%">
-                </el-table-column>
-                <el-table-column
-                  prop="friday"
-                  label="星期五"
-                  min-width="20%">
-                </el-table-column>
-              </el-table>
+        </div>
+        <div class="scoreBoard">
+            <div id="table">
+            <el-table
+                    :data="scoreSelected"
+                    id="classTable"
+                    border>
+                    <el-table-column
+                    
+                    prop="cname"
+                    label="课程名"
+                    min-width="20%">
+                    </el-table-column>
+                    <el-table-column
+                    prop="ctype"
+                    label="课程性质"
+                    min-width="20%">
+                    </el-table-column>
+                    <el-table-column
+                    prop="clscore"
+                    label="课程学分"
+                    min-width="20%">
+                    </el-table-column>
+                    <el-table-column
+                    prop="cltime"
+                    label="课程学时"
+                    min-width="20%">
+                    </el-table-column>
+                    <el-table-column
+                    prop="cbelongto"
+                    label="所属学院"
+                    min-width="20%">
+                    </el-table-column>
+                    <el-table-column
+                    prop="score"
+                    label="成绩"
+                    min-width="20%">
+                    </el-table-column>  
+                    <el-table-column
+                    prop="point"
+                    label="绩点"
+                    min-width="20%">
+                    </el-table-column>  
+                    <el-table-column
+                    prop="ranking"
+                    label="排名"
+                    min-width="20%">
+                    </el-table-column>
+                </el-table>
 
+            </div>
         </div>
-                </div>
-        </div>
+        
     </div>
 </template>
 <script>
@@ -96,18 +107,69 @@ export default {
   },
   data(){
       return{
+          yearSelected:'',
+          monthSelected:'',
+          typeSelected:'',
           selfInfo:{
-              title:'>>>>>',
+              title:'',
               Id:'XXXXXX',
               name:'XXX',
               colleage:'xxxx',
               major:'XXXX',
               class:'XXXX'
-          }
-      }
+          },
+          years:[ {label:'2012-2013',value:'2012-2013'},
+           {label:'2013-2014',value:'2013-2014'},
+           {label:'2014-2015',value:'2014-2015'},
+           {label:'2015-2016',value:'2015-2016'},
+           {label:'2016-2017',value:'2016-2017'},
+           {label:'2017-2018',value:'2017-2018'}
+          ],
+          months:[
+          {label:1,value:1},
+          {label:2,value:2}
+        ],
+        courseTypes:[
+            {label:'必修课',value:'必修课'},
+            {label:'选修课',value:'选修课'},
+            {label:'通选课',value:'通选课'}
+        ],
+        sampleScore:{
+            years:'2015-2016',
+            months:'1',
+            scores:[
+                {cname:'数据结构',ctype:'必修课',clscore:'4',cltime:'64.0',cbelongto:'软件学院',score:'88',point:'3.7',ranking:'14'},
+                {cname:'C++基础教程',ctype:'必修课',clscore:'4',cltime:'64.0',cbelongto:'软件学院',score:'98',point:'4.0',ranking:'4'},
+                {cname:'工科数学分析',ctype:'必修课',clscore:'4',cltime:'64.0',cbelongto:'数学学院',score:'97',point:'4.0',ranking:'6'},
+                 {cname:'java',ctype:'选修课',clscore:'2',cltime:'64.0',cbelongto:'软件学院',score:'97',point:'4.0',ranking:'6'},
+                
+            ]
+
+        },
+        scoreSelected:[]
+     }
   },
   methods:{
       searchScore:function(){
+          console.log(this.yearSelected,this.monthSelected,this.typeSelected);
+          var title=this.yearSelected+' 年第 '+this.monthSelected+' 学期成绩';
+          this.selfInfo.title=title;
+          //按照检索条件发送搜索要求
+           console.log(this.sampleScore.years)
+           this.scoreSelected.length=0;
+          if(this.sampleScore.years==this.yearSelected&&this.sampleScore.months==this.monthSelected){
+              console.log(this.yearSelected);
+              for(var i=0;i<this.sampleScore.scores.length;i++){
+                  
+                  if(this.typeSelected!=''&&this.sampleScore.scores[i].ctype!=(this.typeSelected))
+                    continue;
+                    this.scoreSelected.push(this.sampleScore.scores[i]);
+              }
+              $("#table").show();
+          }else{
+              console.log("没匹配中");
+          }
+          
 
       }
 
@@ -122,7 +184,7 @@ export default {
     margin-top: 10px;
     background-color: #eef1f6;
     width:100%;
-    height:50px;
+  
 }
 .firstBar{
    
@@ -130,7 +192,7 @@ export default {
 }
 .firstBar .selectBar{
     margin:5px 20px 5px 0px;
-    
+    padding:10px;
 }
 #info{
     width:96%;
@@ -145,19 +207,26 @@ export default {
 
     width:100px;
 }
-.scoreBoard{
-    margin-top: 10px;
+.infoBoard{
+    margin-top: 8px;
     background-color: #eef1f6;
     width:100%;
-    height:800px;
+    padding-bottom: 8px;
+}
+.scoreBoard{
+    margin-top: 8px;
+    background-color: #eef1f6;
+    width:100%;
+    
 }
 .lbl{
     font-family: "微软雅黑";
     color:#CDC1C5;
 }
 #table{
-     margin:0px auto;
-    margin-top:20px;
-    width:95%;
+    margin:0px auto;
+    width:95%;display: none;
+    padding:10px;
 }
+
 </style>

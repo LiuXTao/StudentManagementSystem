@@ -1,8 +1,8 @@
 <template>
-    <div>
+    <div class="wrapper">
         <v-head></v-head>
         <div class="clear"></div>
-        <div class="el-main">
+        <div class="selectBoard">
           <div id="selectForm">
               <el-form  id="select">
               <div >
@@ -23,48 +23,47 @@
               <div class="clear"> </div>
             </el-form>
           </div>
-      <div id="table">
-  
+        </div>
+        <div class="tableBoard">
+          <div id="table">
+            <el-table
+                  :data="tableData3"
+                  id="classTable"
+                  border>
+                  <el-table-column
+                    
+                    prop="date"
+                    label="节数\日期"
+                    min-width="10%">
+                  </el-table-column>
+                  <el-table-column
+                    prop="monday"
+                    label="星期一"
+                  min-width="20%">
+                  </el-table-column>
+                  <el-table-column
+                    prop="tuesday"
+                    label="星期二"
+                    min-width="20%">
+                  </el-table-column>
+                  <el-table-column
+                    prop="wednesday"
+                    label="星期三"
+                    min-width="20%">
+                  </el-table-column>
+                  <el-table-column
+                    prop="thursday"
+                    label="星期四"
+                    min-width="20%">
+                  </el-table-column>
+                  <el-table-column
+                    prop="friday"
+                    label="星期五"
+                    min-width="20%">
+                  </el-table-column>
+                </el-table>
 
-         <el-table
-              :data="tableData3"
-              id="classTable"
-              
-              border>
-              <el-table-column
-                
-                prop="date"
-                label="节数\日期"
-                min-width="10%">
-              </el-table-column>
-              <el-table-column
-                prop="monday"
-                label="星期一"
-               min-width="20%">
-              </el-table-column>
-              <el-table-column
-                prop="tuesday"
-                label="星期二"
-                min-width="20%">
-              </el-table-column>
-              <el-table-column
-                prop="wednesday"
-                label="星期三"
-                min-width="20%">
-              </el-table-column>
-              <el-table-column
-                prop="thursday"
-                label="星期四"
-                min-width="20%">
-              </el-table-column>
-              <el-table-column
-                prop="friday"
-                label="星期五"
-                min-width="20%">
-              </el-table-column>
-            </el-table>
-
-          </div>
+              </div>
         </div>
     </div>
 </template>
@@ -133,6 +132,22 @@ export default {
       submit(){
         console.log(this.y_value);
         console.log(this.m_value);
+       if(this.y_value==''){
+           console.log("error") ;
+                this.$message({
+                    type:"info",
+                    message:"请选择搜学年"
+                });
+        }
+        else if(this.m_value==''){
+           console.log("error") ;
+                this.$message({
+                    type:"info",
+                    message:"请选择搜索学期"
+                });
+        }
+        else 
+        $("#table").show();
       }
     },
 
@@ -146,12 +161,12 @@ export default {
  .clear{
      clear:both;
  }
-.el-main{
-    margin-top:5px;
+.selectBoard{
+    margin-top:8px;
     background-color:#eef1f6;
     color: #333;
     text-align: center;
-    height:800px;
+
 }
 #selectForm{
 
@@ -167,6 +182,14 @@ export default {
     width:40%;
     display: inline;
 }
+.tableBoard{
+    margin-top:8px;
+    background-color:#eef1f6;
+    color: #333;
+    text-align: center;
+
+}
+
 #submit{
   margin-top:36px;
   margin-left:10px;
@@ -174,8 +197,9 @@ export default {
 }
 #table{
   width:90%;
-  
+  padding:10px;  
   margin:0px auto;
+  display: none;
 }
 #classTable{
   width:100%;

@@ -19,8 +19,10 @@
           <template v-if="selectIndex==('modify')">
             <right></right>
           </template>
-          <template v-else>
+          <template v-else-if="selectIndex==('question')">
             <security-ques :security-ques="this.securityQues" ></security-ques> 
+          </template>
+          <template v-else>
           </template>
         </div>
 
@@ -62,9 +64,7 @@
     handleSelect:function(key,keyPath){
       this.selectIndex=key;
       console.log(this.selectIndex);
-     
     },
-
     }
   };
 

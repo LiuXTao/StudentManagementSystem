@@ -59,7 +59,7 @@ export default {
                       title:'查询成绩'
                   }]
           },{
-              index:'/student/findCourse',
+              index:'/student/courseQuery',
               title:'查找课程',
               
           },{
