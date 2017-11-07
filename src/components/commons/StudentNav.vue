@@ -65,6 +65,17 @@ export default {
           },{
               index:'/student/elective',
               title:'学生选课',
+			   subs:[{
+                  index:'/student/selectclass',
+                  title:'选课'
+              },{
+                  index:'/student/dropclass',
+                  title:'退课'
+                  },{
+                      index:'/student/selectedclass',
+                      title:'查看已选课程'
+                  }]
+			  
           },{
               index:'quit',
               title:'退出登录'

@@ -25,6 +25,15 @@ export default new Router({
       },{
         path:'/student/courseQuery',
         component:resolve=>require(['../components/pages/coursequery'],resolve)
+      },{
+        path:'/student/selectclass',
+        component:resolve=>require(['../components/pages/selectclass'],resolve)
+      },{
+        path:'/student/dropclass',
+        component:resolve=>require(['../components/pages/dropclass'],resolve)
+      },{
+        path:'/student/selectedclass',
+        component:resolve=>require(['../components/pages/selectedclass'],resolve)
       }
 
     ]
