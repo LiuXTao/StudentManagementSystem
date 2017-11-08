@@ -47,7 +47,7 @@
   </el-form-item>
   <el-form-item>
     <el-button type="primary" @click="submitForm('ruleForm2')">提交</el-button>
-    <el-button @click="resetForm('ruleForm2')">重置</el-button>
+    <el-button @click="quxiao('ruleForm2')">取消</el-button>
   </el-form-item>
 </el-form>
 </el-dialog>
@@ -62,6 +62,7 @@
         vHead,
     },
       data(){
+	 
 	  var checkscore = (rule, value, callback) => {
         if (!value) {
           return callback(new Error('成绩不能为空'));
@@ -86,6 +87,7 @@
         }
       };
         return {
+		 hostUrl:"/",
 		  k:1,
           newsList: [{
 		  id:1,
@@ -124,6 +126,61 @@
         }
       },
 	   methods:{
+	   codeParsing(code) {
+                var msg = (Title, Message) => {
+                    this.$message({
+                        title: Title,
+                        message: Message,
+                        type: 'error'
+                    });
+                };
+                switch(code) {
+                    case -1:
+                        msg('系统错误', '未知错误，请上报管理员');
+                        break;
+                    case 201:
+                        msg('输入域错误', '验证码错误');
+                        break;
+                    case 300:
+                        msg('输入域错误', '邮箱或密码错误');
+                        break;
+                    case 301:
+                        msg('权限问题', '用户已禁用，请联系管理员');
+                        break;
+                    case 302:
+                        msg('权限问题', '用户未激活，请去邮箱激活用户');
+                        break;
+                    case 303:
+                        msg('注册问题', '邮箱已占用，请更改邮箱');
+                        break;
+                    case 304:
+                        msg('注册问题', '昵称已占用，请更改昵称');
+                        break;
+                    case 400:
+                        msg('权限问题', '用户未登录，请重新登录');
+                        break;
+                    case 401:
+                        msg('权限问题', '用户无权访问，请联系管理员');
+                        break;
+                    case 402:
+                        msg('操作错误', '删除错误,请刷新重试');
+                        break;
+                    case 500:
+                        msg('系统错误', '未知错误，请上报管理员');
+                        break;
+                    case 600:
+                        msg('TIME_OUT', '访问超时，请检查网络连接');
+                        break;
+                    case 700:
+                        msg('激活错误', '非法激活链接，请联系管理员');
+                        break;
+                    case 800:
+                        msg('激活错误', '用户已被激活，请直接登录');
+                        break;
+                    default:
+                        break;
+                }
+            },
 	   newsClick1(m){
                 
                 console.log("11111111");
@@ -149,31 +206,88 @@
                 //console.log(coursename);
                 this.$router.push('/teacher/seescore?'+m.id);
             },	
-       getNews(str){//从后端获取数据
-                
+        getNews(){//向后端获取数据
+                var self = this;
+               // self.newsList=[];
+                self.$http({
+                    url:'/score',
+                    method:'get',
+                    baseURL:self.hostURL
+                }).then((response)=>{
+                    self.newsList = [];
+                    self.newsList = response.data;
+                }).catch((error)=>{
+                    self.$message({
+                        type:'info',
+                        message:'connect fail'
+                    });
+                });
             },
-			submitForm(formName) {
+			
+			submitForm(formName) {//提交单个录入成绩
 			 
-	  //alert(this.ruleForm2.score);
+	// alert(this.ruleForm2.score);
 	  //alert(this.k);
+	     
+		 
         this.$refs[formName].validate((valid) => {
           if (valid) {
 		    this.dialogFormVisible = false;
-            alert('submit!');//添加与后端交互的代码
+           //添加与后端交互的代码
+		    this.$http({
+                            url: '/score',
+                            method: 'post',
+                            baseURL: this.hostUrl,
+                            data:this.ruleForm2
+                        })
+                        .then((response) => {
+                            if(response.data.code == "200"){
+                                this.$message({
+                                    type:'success',
+                                    message:'提交成功'
+                                });
+                                
+                            }
+                            else {
+                                console.log(response.data.code);
+                                this.codeParsing(response.data.code);                                
+                            }
+                            setTimeout(()=>{window.location.reload()},1000);
+
+                        })
+                        .catch((error) => {
+                            console.log("Error:", error);
+                            this.$message({
+                                    type:'warning',
+                                    message:'网络无连接'
+                                });
+                           
+
+                        });
           } else {
+		  //this.dialogFormVisible = true;
             console.log('error submit!!');
             return false;
           }
         });
 		
-		 setTimeout(() => {
+		setTimeout(() => {
          this.resetForm(formName);
-        }, 1000);
+        }, 2000);
 		
       },
       resetForm(formName) {
+	    //this.dialogFormVisible = false;
         this.$refs[formName].resetFields();
-      }
+      },
+	  quxiao(formName){
+	  this.dialogFormVisible = false;
+	    this.$message({
+            message:'已取消'
+                                });
+        this.$refs[formName].resetFields();
+		
+	  }
 
         },
 		  
