@@ -13,6 +13,9 @@ export default new Router({
       {
         path:'/student/password',
         component:resolve=>require(['../components/pages/stuPassword.vue'],resolve)
+      }, {
+        path:'/student/fileInfo',
+        component:resolve=>require(['../components/pages/stufileInfo'],resolve)
       },{
         path:'/student/notification',
         component:resolve=>require(['../components/pages/stuNotificationQuery'],resolve)
