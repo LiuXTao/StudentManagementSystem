@@ -45,6 +45,9 @@
          <el-form-item label="政治面貌：" prop="ppolitics_status">
         <el-input v-model="form1.ppolitics_status"  type="text" style="width:220px" ></el-input>
      </el-form-item>
+         <el-form-item label="联系方式：" prop="pcontact_information">
+        <el-input v-model="form1.pcontact_information"  type="text" style="width:220px" ></el-input>
+     </el-form-item>
          <el-form-item label="方向：" prop="parea_of_interest">
         <el-input v-model="form1.parea_of_interest"  type="text" style="width:220px" ></el-input>
      </el-form-item><el-col></el-col>
@@ -81,6 +84,12 @@
             var vm = this.$data;
             if( value.length > 20){
               return callback(new Error('长度不可超于20个字符'));
+           }
+        }; 
+          var checklength4 = (rule,value,callback) => {
+            var vm = this.$data;
+            if( value.length > 15){
+              return callback(new Error('长度不可超于15个字符'));
            }
         };
           var checklength3 = (rule,value,callback) => {
@@ -135,6 +144,10 @@
               pnationality:[
                 { validator: checklength3, trigger:'change'},
                 { validator: checklength3, trigger:'blur'}
+            ], 
+              pcontact_information:[
+                { validator: checklength4, trigger:'change'},
+                { validator: checklength4, trigger:'blur'}
             ],
               ppolitics_status:[
                 { validator: checklength5, trigger:'change'},
@@ -214,7 +227,8 @@
                 ppolitics_status:"",              
                 parea_of_interest:"",              
                 psex:"",              
-                ptitle:""
+                ptitle:"",
+                pcontact_information:""
 
                         };
                         postData.pteaching_age = vm.form1.pteaching_age;
@@ -225,6 +239,7 @@
                         postData.parea_of_interest = vm.form1.parea_of_interest;
                         postData. psex = vm.form1. psex;
                         postData.ptitle = vm.form1.ptitle;
+                        postData.pcontact_information = vm.form1.pcontact_information;
                          this.$http({
                             url:'/filesInfo',
                             method:'post',
