@@ -9,18 +9,42 @@ public class StudentInfo extends Student {
     private String majName;
     private String depName;
     private String claName;
+    private String stringtimeEnrollment;
+    private String stringtimeGraducation;
+    private String stringbirthDay;
+    public StudentInfo() {
 
-    public StudentInfo(String majName, String depName, String claName) {
+    }
+
+    public StudentInfo(long id, String password, String name, Date timeEnrollment, Date timeGraduation, String title, int sex, Date birthday, String nationality, String areaInterest, String healthState, String nativePlace, String politicalStatus, int majId, long claId, String majName, String depName, String claName) {
+        super(id, password, name, timeEnrollment, timeGraduation, title, sex, birthday, nationality, areaInterest, healthState, nativePlace, politicalStatus, majId, claId);
         this.majName = majName;
         this.depName = depName;
         this.claName = claName;
     }
 
-    public StudentInfo(long id, String password, String name, Date timeEnrollment, Date timeGraduation, String title, String sex, Date birthday, String nationality, String areaInterest, String healthState, String nativePlace, String politicalStatus, int majId, long claId, String majName, String depName, String claName) {
-        super(id, password, name, timeEnrollment, timeGraduation, title, sex, birthday, nationality, areaInterest, healthState, nativePlace, politicalStatus, majId, claId);
-        this.majName = majName;
-        this.depName = depName;
-        this.claName = claName;
+    public String getStringtimeEnrollment() {
+        return stringtimeEnrollment;
+    }
+
+    public void setStringtimeEnrollment(String stringtimeEnrollment) {
+        this.stringtimeEnrollment = stringtimeEnrollment;
+    }
+
+    public String getStringtimeGraducation() {
+        return stringtimeGraducation;
+    }
+
+    public void setStringtimeGraducation(String stringtimeGraducation) {
+        this.stringtimeGraducation = stringtimeGraducation;
+    }
+
+    public String getStringbirthDay() {
+        return stringbirthDay;
+    }
+
+    public void setStringbirthDay(String stringbirthDay) {
+        this.stringbirthDay = stringbirthDay;
     }
 
     public String getMajName() {

@@ -21,4 +21,5 @@ public interface TakesMapper {
             "where takes.stuID=student.id and course.id=takes.couID <when test='id!=null'>and takes.couID=#{id} </when></script>"})
     ArrayList<TakesInfo> getCourseStudent(@Param("id")long id);
 
+
 }

@@ -70,23 +70,31 @@ public class StudentController {
         String id=request.getParameter("id");
         System.out.println(id);
         StudentInfo student=stuFileInfoService.getStudentInfo(Long.parseLong(id));
-        System.out.println(student.getTimeEnrollment());
+        System.out.println(student);
+        System.out.println(student.getStringtimeGraducation());
         return student;
     }
 
     @RequestMapping("/student/setInfo")
     @ResponseBody
     public Data setStudentInfo(HttpServletRequest request){
-//        System.out.print("过来了");
+        System.out.print("过来了");
         String sid=request.getParameter("id");
         Long id=Long.parseLong(sid);
         String nationality=request.getParameter("nationality");
         String nativePlace=request.getParameter("nativePlace");
         String politicalStatus=request.getParameter("politicalStatus");
-        String sex=request.getParameter("sex");
+        int sex=Integer.parseInt(request.getParameter("sex"));
         String areaInterest=request.getParameter("areaInterest");
         String title=request.getParameter("title");
-        boolean result=stuFileInfoService.setStudentInfo(id,nationality,nativePlace,politicalStatus,sex,areaInterest,title);
+        String healthState=request.getParameter("health");
+        String enrollTime=request.getParameter("enrollTime");
+        String graduateTime=request.getParameter("graduateTime");
+        String birthDay=request.getParameter("birthday");
+        System.out.println(enrollTime);
+        System.out.println(graduateTime);
+
+        boolean result=stuFileInfoService.setStudentInfo(id,nationality,nativePlace,politicalStatus,sex,areaInterest,title,healthState,enrollTime,graduateTime,birthDay);
         Data data=new Data();
         if(result==true)
             data.setData(1);
@@ -275,6 +283,38 @@ public class StudentController {
         Long sid=Long.parseLong(request.getParameter("stuId"));
 
         String result=stuSelectCourseServiceImpl.getSelectCourse(depId,type,yuliang,sid);
+        ResponsdString responsdString=new ResponsdString(result);
+        return responsdString;
+    }
+
+    @RequestMapping("/student/submitSelect")
+    @ResponseBody
+    public ResponsdString submitSelect(HttpServletRequest request){
+        System.out.println(1);
+        String []jsonArr=request.getParameterValues("selectCourse[]");
+        System.out.println(jsonArr.length);
+        for(int i=0;i<jsonArr.length;i++){
+            System.out.println(jsonArr[i]);
+        }
+        stuSelectCourseServiceImpl.subStudentSelect(jsonArr);
+        Integer depId=Integer.parseInt(request.getParameter("depId"));
+        int type=Integer.parseInt(request.getParameter("type"));
+        int yuliang=Integer.parseInt(request.getParameter("yuliang"));
+        Long sid=Long.parseLong(request.getParameter("stuId"));
+
+        String result=stuSelectCourseServiceImpl.getSelectCourse(depId,type,yuliang,sid);
+        ResponsdString responsdString=new ResponsdString(result);
+        return responsdString;
+
+    }
+
+    @RequestMapping("/student/myallcourses")
+    @ResponseBody
+    public ResponsdString getMyAllCourses(HttpServletRequest request){
+        Long id=Long.parseLong(request.getParameter("id"));
+        System.out.println(id);
+
+        String result=stuSelectCourseServiceImpl.getMyAllCourses(id);
         ResponsdString responsdString=new ResponsdString(result);
         return responsdString;
     }

@@ -13,7 +13,7 @@ public class Professor implements Serializable {
     private Date birthday;
     private String nationality;
     private String areaInterest;
-    private String sex;
+    private int sex;
     private String politicalStatus;
     private String contactInfomation;
     private int depId;
@@ -21,7 +21,7 @@ public class Professor implements Serializable {
     public Professor() {
     }
 
-    public Professor(long id, String password, String name, Integer teachingAge, String title, String educationBackground, Date birthday, String nationality, String areaInterest, String sex, String politicalStatus, String contactInfomation, int depId) {
+    public Professor(long id, String password, String name, Integer teachingAge, String title, String educationBackground, Date birthday, String nationality, String areaInterest, int sex, String politicalStatus, String contactInfomation, int depId) {
 
         this.id = id;
         this.password = password;
@@ -111,11 +111,11 @@ public class Professor implements Serializable {
         this.areaInterest = areaInterest;
     }
 
-    public String getSex() {
+    public int getSex() {
         return sex;
     }
 
-    public void setSex(String sex) {
+    public void setSex(int sex) {
         this.sex = sex;
     }
 

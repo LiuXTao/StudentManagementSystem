@@ -8,14 +8,14 @@ public class Takes implements Serializable {
     private double grade;
     private int ranking;
     private int PerformancePoint;
-    private int selected;
+    private int completed;
 
     public int getSelected() {
-        return selected;
+        return completed;
     }
 
     public void setSelected(int selected) {
-        this.selected = selected;
+        this.completed = selected;
     }
 
     public Takes() {
@@ -27,7 +27,7 @@ public class Takes implements Serializable {
         this.grade = grade;
         this.ranking = ranking;
         this.PerformancePoint = performancePoint;
-        this.selected = selected;
+        this.completed = selected;
     }
 
     public int getRanking() {

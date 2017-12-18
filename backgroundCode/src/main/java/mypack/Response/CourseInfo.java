@@ -8,6 +8,8 @@ public class CourseInfo extends Course{
     private String times;
     private String teaName;
     private String depName;
+
+
     public CourseInfo() {
     }
 

@@ -24,7 +24,7 @@
         <property name="driverClassName" value="com.mysql.jdbc.Driver" />
         <property name="url" value="jdbc:mysql://localhost:3306/education" />
         <property name="username" value="root" />
-        <property name="password" value="fu2017" />
+        <property name="password" value="Liu@960810li" />
     </bean>
     <!--配置mybatis-spring的bean-->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean" p:dataSource-ref="dataSource" />

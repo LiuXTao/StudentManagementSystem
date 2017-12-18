@@ -83,9 +83,13 @@ public class ProfessorController {
         String educationBackgroud = request.getParameter("educationBackground");
         String politicalStatus = request.getParameter("politicalStatus");
         String areaInterest = request.getParameter("areaInterest");
+        int sex=Integer.parseInt(request.getParameter("sex"));
+        String title=request.getParameter("title");
+        String contact=request.getParameter("contact");
+        String birthday=request.getParameter("birthday");
 
         System.out.print(id + "--->" + nationality);
-        boolean result = teaFileInfoService.setProfessorInfo(Long.parseLong(id), nationality, teachingAge, educationBackgroud, areaInterest, politicalStatus);
+        boolean result = teaFileInfoService.setProfessorInfo(Long.parseLong(id), nationality, teachingAge, educationBackgroud, areaInterest, politicalStatus,sex,title,contact,birthday);
         Data data = new Data();
         if (result == true)
             data.setData(1);

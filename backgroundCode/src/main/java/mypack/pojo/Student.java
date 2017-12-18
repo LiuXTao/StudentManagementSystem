@@ -10,7 +10,7 @@ public class Student implements Serializable {
     private Date timeEnrollment;
     private Date timeGraduation;
     private String title;
-    private String sex;
+    private  int sex;
     private Date birthday;
     private String nationality;
     private String areaInterest;
@@ -21,10 +21,13 @@ public class Student implements Serializable {
     private long claId;
 
 
+
     public Student() {
     }
 
-    public Student(long id, String password, String name, Date timeEnrollment, Date timeGraduation, String title, String sex, Date birthday, String nationality, String areaInterest, String healthState, String nativePlace, String politicalStatus, int majId, long claId) {
+
+
+    public Student(long id, String password, String name, Date timeEnrollment, Date timeGraduation, String title, int sex, Date birthday, String nationality, String areaInterest, String healthState, String nativePlace, String politicalStatus, int majId, long claId) {
 
         this.id = id;
         this.password = password;
@@ -41,6 +44,7 @@ public class Student implements Serializable {
         this.politicalStatus = politicalStatus;
         this.majId = majId;
         this.claId = claId;
+
 
     }
 
@@ -93,11 +97,11 @@ public class Student implements Serializable {
         this.title = title;
     }
 
-    public String getSex() {
+    public int getSex() {
         return sex;
     }
 
-    public void setSex(String sex) {
+    public void setSex(int sex) {
         this.sex = sex;
     }
 
