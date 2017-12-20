@@ -1,8 +1,6 @@
 /*
 Source Database       : education
 */
-
---SET FOREIGN_KEY_CHECKS=0;
 drop database education;
 create database education;
 use education;
@@ -43,6 +41,7 @@ CREATE TABLE `department` (
 `name`  char(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,
 `building`  char(10) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,
 `contactInfomation`  char(15) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL ,
+`newProfessor` int(5) DEFAULT '0' ,
 PRIMARY KEY (`id`)
 )
 ENGINE=InnoDB
@@ -58,6 +57,7 @@ CREATE TABLE `major` (
 `id`  int(5) NOT NULL ,
 `name`  char(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,
 `depID`  int(3) NOT NULL ,
+`newStudent` int(5)  DEFAULT '0' ,
 PRIMARY KEY (`id`),
 FOREIGN KEY (`depID`) REFERENCES `department` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 )
@@ -102,7 +102,7 @@ CREATE TABLE `professor` (
 `id`  bigint(15) NOT NULL ,
 `password`  char(15) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,
 `name`  char(15) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,
-`teachingAge`  int(3) NULL DEFAULT NULL ,
+`year` int(5) NULL DEFAULT NULL ,
 `title`  char(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL ,
 `educationBackground`  char(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL ,
 `birthday`  date NULL DEFAULT NULL ,
@@ -140,18 +140,12 @@ CREATE TABLE `course` (
 `id`  bigint(15) NOT NULL ,
 `name`  char(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,
 `type`  int(2) NULL DEFAULT NULL ,
-`credict`  int(4) NULL DEFAULT NULL ,
-`totalTime`  int(3) NULL DEFAULT NULL ,
-`learnTerm`  int(2) NULL DEFAULT NULL ,
-`learnYear`  varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL ,
 `classroom`  char(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL ,
-`depID`  int(3) NOT NULL ,
-
+`depID`  int(3) NOT NULL, 
 `timeSlotID`  int(10) NOT NULL ,
 `proID`  bigint(15) NOT NULL ,
 `admID`  int(10) NULL DEFAULT NULL ,
 `stuNumber`  int(3) NULL DEFAULT NULL ,
-
 `quantity`  int(3) NULL DEFAULT NULL ,
 PRIMARY KEY (`id`),
 FOREIGN KEY (`depID`) REFERENCES `department` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
